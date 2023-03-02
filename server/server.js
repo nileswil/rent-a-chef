@@ -1,10 +1,22 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const PORT = 8080;
+const PORT = 8081;
 const { Pool } = require('pg');
 
+const userController = require('./controllers/userController');
+const authController = require('./controllers/authController');
+
 const PG_URI = 'postgres://lhqlrklz:tdP5mLWEHFOejQeuMDbsuV108GTBgYEd@baasu.db.elephantsql.com/lhqlrklz';
+const pool = new Pool({
+  connectionString: PG_URI
+});
+
+module.exports = {
+  query: (text, params, callback) => {
+    return pool.query(text,params,callback)
+  }
+}
 
 //app.use(cookiePaser);
 app.use(express.json());
@@ -14,10 +26,10 @@ app.use(express.urlencoded({extended:true}));
 /*
 PUT MIDDLEWARE BELOW HERE
 */
-const pool = new Pool({
-  connectionString: PG_URI
-});
 
+app.get('/login', authController.login, (req, res) => {
+  res.status(200).json({message: 'success'});
+});
 
 
 /*
