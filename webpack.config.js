@@ -16,12 +16,10 @@ module.exports = {
       directory: '/build',
       publicPath: path.resolve(__dirname, 'build'),
     },
-    historyApiFallback: {
-      index: '/'
-    },
+    historyApiFallback: true,
     proxy: [
       {
-        context: ['/'],
+        context: [],
         target: 'http://localhost:3000', //makes calls from 8080 to 3000 for / endpoints
       },
     ],
