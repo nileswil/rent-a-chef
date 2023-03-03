@@ -24,16 +24,17 @@ export default function Login () {
 
   return (
 
-    <div id="login-box">
-      <div>Hello</div>
-      <form>
-        <input type="text" placeholder="Username"/>
-        <br/>
-        <input type="text" placeholder="Password"/>
-      </form>
-      <button id="login-button" onClick={login}>Login</button>
-      <button id="signup-button">Sign Up</button>
+    <div id="login">
+      <div id="login-box">
+        <div>Hello</div>
+        <form>
+          <input type="text" placeholder="Username"/>
+          <br/>
+          <input type="text" placeholder="Password"/>
+        </form>
+        <button id="login-button" onClick={login}>Login</button>
+        <button id="signup-button">Sign Up</button>
+      </div>
     </div>
-
   )
 }

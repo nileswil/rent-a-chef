@@ -5,14 +5,9 @@ import UserTopNavBar from "./UserTopNavBar.jsx";
 
 export default function App() {
   return (
-
-    <div id="login">
       <Routes>
-        <Route path="/" element={<Login/>}>
-
-        </Route>
+        <Route path="/" element={<Login/>}/>
+        <Route path="dashboard" element={<UserTopNavBar/>}/>
       </Routes>
-    </div>
-
   )
 };
