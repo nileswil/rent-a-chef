@@ -19,7 +19,7 @@ export default function Login () {
       },
     })
     .then(res => {console.log(res)})
-    .catch(err => console.log(err));
+    .catch(err => console.log)
   }
 
   return (

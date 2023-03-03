@@ -1,6 +1,6 @@
 //NEW USER SIGNUP
 const jwt = require('jsonwebtoken');
-const db = require('../server')
+const db = require('../models/chefModels');
 
 const userController = {};
 

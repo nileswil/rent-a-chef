@@ -21,8 +21,8 @@ module.exports = {
     },
     proxy: [
       {
-        context: ['/api'],
-        target: 'http://localhost:3000', //makes calls from 8080 to 3000 for /api endpoints
+        context: ['/'],
+        target: 'http://localhost:3000', //makes calls from 8080 to 3000 for / endpoints
       },
     ],
   },
