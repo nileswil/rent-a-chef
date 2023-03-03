@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const path = require('path');
+// const path = require('path');
 const PORT = 3000;
-const { Pool } = require('pg');
-
+// const { Pool } = require('pg');
+const userRoute = require('./routes/userRoute');
 const userController = require('./controllers/userController');
 const authController = require('./controllers/authController');
 
@@ -17,6 +17,10 @@ app.use(express.urlencoded({extended:true}));
 /*
 PUT MIDDLEWARE BELOW HERE
 */
+
+app.get('/api', (req, res) => {
+    res.status(200).json({message: 'success'});
+});
 
 app.get('/login', (req, res) => {
   res.status(200).json({message: 'success'});
