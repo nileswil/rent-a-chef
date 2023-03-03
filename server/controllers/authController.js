@@ -3,19 +3,24 @@ const authController = {};
 const bcrypt = require('bcrypt');
 authController.login = async (req, res, next) => {
     const { username, password } = req.body;
-    const queryString = `
-        SELECT * FROM "user"
-        WHERE username = $1 AND password = $2
-        RETURNING *
-    `;
-    const values = [username, password];
     try {
-        const data = await db.query(queryString, values);
+      const queryString = `
+      SELECT * FROM "user"
+      WHERE username = ${username}
+      `;
+        const data = await db.query(queryString);
         console.log(`${username} has been found`)
+        
         if (data.rows.length === 0) res.status(404).json({message:'users not found'});
+        const valid = await bcrypt.compare(password, data.rows[0].password)
 
-        // const valid =
-        // res.locals.user = data.rows[0];
+        if (valid) {
+          console.log('password is valid');
+            res.locals.userId = data.rows[0]._id;
+        } else {
+            console.log('invalid password');
+            res.locals.validate = false;
+        }
         return next();
     }
     catch (err) {

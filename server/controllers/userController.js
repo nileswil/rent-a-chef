@@ -10,7 +10,6 @@ userController.createUser = async (req, res, next) => {
     const queryString = `
     INSERT INTO "user"(username, password, picture, firstname, lastname, status)
     VALUES ($1,$2,$3,$4,$5,$6)
-    RETURNING *
     `;
     const values = [username, password, picture, firstname, lastname, status];
     try {
