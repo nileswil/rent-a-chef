@@ -17,13 +17,7 @@ authController.login = async (req, res, next) => {
         console.log(`pass${data.rows[0].password}`)
         const valid = await bcrypt.compare(password, data.rows[0].password)
 
-        if (valid) {
-          console.log('password is valid');
-            res.locals.user = data.rows[0];
-        } else {
-            //res.locals.validate = false;
-            return res.status(401).json({message: "invalid password"});
-        }
+        // res.locals.user = data.rows[0];
         return next();
     }
     catch (err) {
