@@ -1,19 +1,23 @@
 //NEW USER SIGNUP
-const jwt = require('jsonwebtoken');
 const db = require('../models/chefModels');
+const bcrypt = require('bcrypt');
+const SALT_WORK_FACTOR = 10;
 
 const userController = {};
 
 //INSERT NEW USER TO THE DATABASE
 userController.createUser = async (req, res, next) => {
     const { username, password, picture, firstname, lastname, status } = req.body;
-    const queryString = `
-    INSERT INTO "user"(username, password, picture, firstname, lastname, status)
-    VALUES ($1,$2,$3,$4,$5,$6)
-    `;
-    const values = [username, password, picture, firstname, lastname, status];
+    
     try {
-        const data = await db.query(sql, values);
+      const hashedPass = await bcrypt.hash(password, SALT_WORK_FACTOR);
+
+      const queryString = `
+      INSERT INTO "user"(username, password, picture, firstname, lastname, status)
+      VALUES ($1,$2,$3,$4,$5,$6)
+      `;
+      const values = [username, hashedPass, picture, firstname, lastname, status];
+        const data = await db.query(queryString, values);
         console.log(`${username} has been added to the database successfully!` )
         res.locals.newUser = data.rows[0];
         return next();

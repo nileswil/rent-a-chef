@@ -4,15 +4,12 @@ const userController = require('../controllers/userController');
 const authController = require('../controllers/authController')
 
 
-router.route('/login')
-    //CREATE A NEW USER;
-    .post(userController.createUser, (req, res) => {
-        res.status(200).json(res.locals.newUser);
-        return next();
+router.post('/signup', userController.createUser, (req, res) => {
+  res.status(200).json(res.locals.newUser);
     })
-    .post(authController.login, (req, res) => {
-      return res.status(200).json({validate: res.locals.validate}); 
-    })
+router.post('/login', authController.login, (req, res) => {
+  return res.status(200).json({validate: res.locals.user}); 
+});
 
     //UPDATE A USER INFO
 
