@@ -1,27 +1,28 @@
 const db = require('../models/chefModels');
 const authController = {};
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
 authController.login = async (req, res, next) => {
     const { username, password } = req.body;
-    try {
+ try {
       const queryString = `
       SELECT * FROM "user"
-      WHERE username = ${username}
+      WHERE username = $1
       `;
-        const data = await db.query(queryString);
+        const value = [username];
+        const data = await db.query(queryString, value);
         console.log(`${username} has been found`)
         
         if (data.rows.length === 0) res.status(404).json({message:'users not found'});
+        console.log(`pass${data.rows[0].password}`)
         const valid = await bcrypt.compare(password, data.rows[0].password)
 
         if (valid) {
           console.log('password is valid');
-            res.locals.userId = data.rows[0]._id;
+            res.locals.user = data.rows[0];
         } else {
-            console.log('invalid password');
-            res.locals.validate = false;
+            //res.locals.validate = false;
+            return res.status(401).json({message: "invalid password"});
         }
         return next();
     }
