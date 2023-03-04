@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const authController = require('../controllers/authController')
+const authController = require('../controllers/authController');
+const cookieController = require('../controllers/cookieController');
 
 
 router.route('/login')
@@ -10,7 +11,7 @@ router.route('/login')
         res.status(200).json(res.locals.newUser);
         return next();
     })
-    .post(authController.login, (req, res) => {
+    .post(authController.login, cookieController.jwtEncryptUser, (req, res) => {
       return res.status(200).json({validate: res.locals.validate}); 
     })
 

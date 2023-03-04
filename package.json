@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"hello world\"",
     "build": "webpack",
-    "dev": "nodemon server/server.js & webpack-dev-server --open"
+    "dev": "concurrently \"nodemon server/server.js\" \"webpack-dev-server --open\""
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/nileswil/rent-a-chef#readme",
   "dependencies": {
+    "concurrently": "^7.6.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "html-webpack-plugin": "^5.5.0",

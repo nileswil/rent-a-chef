@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
+const cookieParser = require("cookie-parser");
 // const path = require('path');
+
 const PORT = 3000;
 // const { Pool } = require('pg');
-const userRoute = require('./routes/userRoute');
-const userController = require('./controllers/userController');
-const authController = require('./controllers/authController');
 
+const userRoute = require('./routes/userRoute');
+// const userController = require('./controllers/userController');
+// const authController = require('./controllers/authController');
 
 
 app.use(cookieParser);
@@ -19,7 +21,7 @@ PUT MIDDLEWARE BELOW HERE
 */
 
 app.get('/api', (req, res) => {
-    res.status(200).json({message: 'success'});
+  res.status(200).json({message: 'success'});
 });
 
 app.get('/login', (req, res) => {

@@ -1,6 +1,8 @@
 const db = require('../models/chefModels');
 const authController = {};
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 authController.login = async (req, res, next) => {
     const { username, password } = req.body;
     try {
@@ -28,7 +30,7 @@ authController.login = async (req, res, next) => {
             log: 'Error in login middleware',
             status: 500,
             message: {
-                err:err.message
+                err: err.message
             }
         })
     }
