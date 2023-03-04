@@ -1,6 +1,7 @@
 const db = require('../models/chefModels');
 const authController = {};
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 authController.login = async (req, res, next) => {
     const { username, password } = req.body;
