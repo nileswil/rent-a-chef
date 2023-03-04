@@ -1,6 +1,8 @@
 const db = require('../server');
+const bcrypt = require();
+
+
 const authController = {};
-const bcrypt = require()
 authController.login = async (req, res, next) => {
     const { username, password } = req.body;
     const queryString = `
@@ -14,7 +16,6 @@ authController.login = async (req, res, next) => {
         console.log(`${username} has been found`)
         if (data.rows.length === 0) res.status(404).json({message:'users not found'});
 
-        const valid =
         // res.locals.user = data.rows[0];
         return next();
     }

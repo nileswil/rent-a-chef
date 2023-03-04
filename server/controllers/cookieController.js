@@ -1,4 +1,7 @@
 const jwt = require('jsonwebtoken');
-const cookieController = {};
 
-cookieController.setSSID;
+
+const cookieController = {};
+cookieController.setCookie = (req, res, next) => {
+
+};

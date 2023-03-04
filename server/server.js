@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const PORT = 8081;
 const { Pool } = require('pg');
+const cookieParser = require('cookie-parser');
 
 const userController = require('./controllers/userController');
 const authController = require('./controllers/authController');
@@ -14,11 +15,11 @@ const pool = new Pool({
 
 module.exports = {
   query: (text, params, callback) => {
-    return pool.query(text,params,callback)
+    return pool.query(text, params, callback)
   }
 }
 
-//app.use(cookiePaser);
+app.use(cookieParser);
 app.use(express.json());
 //app.use(express.static());
 app.use(express.urlencoded({extended:true}));
