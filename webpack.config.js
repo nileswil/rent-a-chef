@@ -19,7 +19,7 @@ module.exports = {
     historyApiFallback: true,
     proxy: [
       {
-        context: ['/api'],
+        context: ['**'],
         target: 'http://localhost:3000', //makes calls from 8080 to 3000 for / endpoints
       },
     ],
