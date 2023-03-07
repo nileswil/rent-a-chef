@@ -18,8 +18,9 @@ export default function Login () {
         password: password,
       },
     })
-    .then(res => {console.log(res)})
-    .catch(err => console.log)
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   }
 
   return (

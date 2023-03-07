@@ -31,7 +31,7 @@ authController.login = async (req, res, next) => {
             log: 'Error in login middleware',
             status: 500,
             message: {
-                err:err.message
+                err: err.message
             }
         })
     }
