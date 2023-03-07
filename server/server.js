@@ -20,11 +20,11 @@ app.use(express.urlencoded({extended:true}));
 PUT MIDDLEWARE BELOW HERE
 */
 
-app.use('/api', (req,res,next) => { console.log(req.body.username); return next(); }, userRoute);
-
-// app.get('/login', (req, res) => {
-//   res.status(200).json({message: 'success'});
-// });
+app.use('/api', (req,res,next) => { console.log("HELLO"); return next(); }, userRoute);
+app.use('/api', (req,res,next) => { console.log("HELLO"); return next(); }, chefRoute);
+app.get('/api/login', (req,res,next) => { console.log("HELLO"); return next(); }, (req, res) => {
+  res.status(200).json({message: 'success'});
+});
 
 
 /*
