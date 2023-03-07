@@ -17,7 +17,7 @@ cookieController.jwtEncryptUser = async (req, res, next) => {
       log: 'Error in jwtEncryptUser middleware',
       status: 500,
       message: {
-          err: err.message
+        err: err.message
       }
     })
   }
@@ -39,7 +39,7 @@ cookieController.jwtAuth = async (req, res, next) => {
       log: 'Error in jwtAuth middleware',
       status: 500,
       message: {
-          err: err.message
+        err: err.message
       }
     })
   }

@@ -8,18 +8,19 @@ export default function Login () {
     const username = document.getElementsByTagName('input')[0].value;
     const password = document.getElementsByTagName('input')[1].value;
 
-    await fetch('/login', {
+    await fetch('/api/login', {
       method: "POST",
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/x-www-form-urlencoded'
       },
       body: {
         username: username,
         password: password,
       },
     })
-    .then(res => {console.log(res)})
-    .catch(err => console.log)
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   }
 
   return (
