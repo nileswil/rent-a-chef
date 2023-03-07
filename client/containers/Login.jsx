@@ -11,7 +11,7 @@ export default function Login () {
     await fetch('/api/login', {
       method: "POST",
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/x-www-form-urlencoded'
       },
       body: JSON.stringify({
         username,
@@ -33,8 +33,8 @@ export default function Login () {
           <br/>
           <input type="text" placeholder="Password"/>
         </form>
-        <button id="login-button" onClick={login}>Login</button>
-        <button id="signup-button">Sign Up</button>
+        <Link to="/dashboard"><button id="login-button">Login</button></Link>
+        <Link to="/dashboard"><button id="signup-button">Sign Up</button></Link>
       </div>
     </div>
   )
