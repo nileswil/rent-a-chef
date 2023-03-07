@@ -1,37 +1,41 @@
 const jwt = require('jsonwebtoken');
-
-
-const loggedUsers = {};
-
+require('dotenv').config();
 const cookieController = {};
+
 cookieController.jwtEncryptUser = async (req, res, next) => {
   try {
-    const token = jwt.sign(loggedUsers[username], process.env.ACCESS_TOKEN_SECRET);
-    loggedUsers[token] = { ...res.locals.user }
+    const {_id} = res.locals;
+    console.log('id in cookieController ', _id)
+    const token = jwt.sign({id:_id}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+    console.log(`token => ${token}`);
+    // loggedUsers[token] = { ...res.locals.user }
 
-    res.cookie('authToken', token);
-    next();
+    res.cookie('authToken', token, {httpOnly: true, secure: true});
+    res.locals.token = token;
+    return next();
 
   } catch (err) {
+    console.log(err);
     return next({
       log: 'Error in jwtEncryptUser middleware',
       status: 500,
       message: {
         err: err.message
       }
-    })
+    });
   }
-}
+};
 
-cookieController.jwtAuth = async (req, res, next) => {
+cookieController.isLoggedIn = async (req, res, next) => {
   try {
     const token = req.cookies.authToken;
     if(!token) res.status(401);
 
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (req, res, next) => {
-      if(err) res.status(403);
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err) => {
+      if(err) return res.status(403).json({validate: false});
       
-      res.status(200).json({ ...loggedUsers[token] })
+      res.locals.validate = true;
+      return next();
     });
 
   } catch (err) {
@@ -44,3 +48,5 @@ cookieController.jwtAuth = async (req, res, next) => {
     })
   }
 }
+
+module.exports = cookieController;

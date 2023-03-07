@@ -5,15 +5,15 @@ const authController = require('../controllers/authController');
 const cookieController = require('../controllers/cookieController');
 
 
-router.post('/signup', userController.createUser, (req, res) => {
+router.post('/signup', userController.createUser, cookieController.jwtEncryptUser, (req, res) => {
   res.status(200).json(res.locals.newUser);
 });
 
-router.post('/login', authController.login, (req, res) => {
-  return res.status(200).json({validate: res.locals.user}); 
+router.post('/login', authController.login, cookieController.jwtEncryptUser, (req, res) => {
+  res.status(200).json(res.locals.validate); 
 });
 
-//UPDATE A USER INFO
+    //UPDATE A USER INFO
 
-//DELETE A USER
-module.exports = router;
+    //DELETE A USER
+    module.exports = router;
