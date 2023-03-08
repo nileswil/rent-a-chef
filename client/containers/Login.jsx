@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 
+import '../../styles/login.scss';
+
 export default function Login () {
   const [signup, setSignup] = useState(false);
 
@@ -25,16 +27,19 @@ export default function Login () {
 
   return (
 
-    <div id="login">
-      <div id="login-box">
-        <div>Hello</div>
-        <form>
-          <input type="text" placeholder="Username"/>
-          <br/>
-          <input type="text" placeholder="Password"/>
-        </form>
-        <Link to="/dashboard"><button id="login-button">Login</button></Link>
-        <Link to="/dashboard"><button id="signup-button">Sign Up</button></Link>
+    <div id="content-area">
+      <div id="login">
+        <div id="login-box">
+          <div className="welcome">Welcome to</div>
+          <div className="welcome">Rent-A-Chef</div>
+          <form>
+            <input className="login-input" type="text" placeholder="Username"/>
+            <br/>
+            <input className="login-input" type="text" placeholder="Password"/>
+          </form>
+          <Link to="/dashboard"><button id="login-button">Login</button></Link>
+          <Link to="/dashboard"><button id="signup-button">Sign Up</button></Link>
+        </div>
       </div>
     </div>
   )
