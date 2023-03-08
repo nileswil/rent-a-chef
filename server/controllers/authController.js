@@ -7,6 +7,7 @@ authController.login = async (req, res, next) => {
     const { username, password } = req.body;
     //console.log(`newUser => ${res.locals.newUser}`)
  try {
+    // if (username || password === '' || (username || password) }
       const queryString = `
       SELECT * FROM "user"
       WHERE username = $1
