@@ -13,7 +13,6 @@ export default function Login() {
       event.preventDefault();
       const username = document.getElementsByTagName('input')[0].value;
       const password = document.getElementsByTagName('input')[1].value;
-      let data;
       if (!username || !password) {
         setWrongInfo(true);
         data = false;
@@ -21,7 +20,7 @@ export default function Login() {
 
       console.log('username: ', username);
       console.log('password: ', password);
-      
+
       const response = await fetch('/api/login', {
         method: "POST",
         headers: {
@@ -31,25 +30,24 @@ export default function Login() {
           username,
           password,
         })
-      });
-      data = await response.json();
-      console.log(data);
-   
-      if(data){ 
-        console.log(data)
+      }).then((data) => response.json());
+      console.log(response);
+
+      if(response){
+        console.log(response)
         return navigate('/dashboard');
       }
-      return null; 
+      return null;
     }
     catch (err) {
         console.log(err)
       }
-      
+
   }
   // const changeUsername = (e) => {
   //   setUsername(e.target.value)
   // }
-  
+
 
   return (
       <div id="login">
@@ -69,4 +67,4 @@ export default function Login() {
   }
 
 
- 
+
