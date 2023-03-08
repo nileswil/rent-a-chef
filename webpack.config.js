@@ -17,19 +17,19 @@ module.exports = {
       publicPath: path.resolve(__dirname, 'build'),
     },
     historyApiFallback: true,
-    proxy: [
-      {
-        context: ['**'],
-        target: 'http://localhost:3000', //makes calls from 8080 to 3000 for / endpoints
+    proxy: {
+      '/api/**': {
+        target: 'http://localhost:3000/',
+        secure: false,
       },
-    ],
+    },
   },
 
   plugins: [ //req'd for dev server to display HTML content
     new HtmlWebpackPlugin({
       title: 'Development',
       template: 'index.html',
-    }),
+    })
   ],
 
   module: {

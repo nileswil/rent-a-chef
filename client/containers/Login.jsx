@@ -11,7 +11,7 @@ export default function Login () {
     await fetch('/api/login', {
       method: "POST",
       headers: {
-        'Content-type': 'application/x-www-form-urlencoded'
+        'Content-type': 'application/json'
       },
       body: JSON.stringify({
         username,
