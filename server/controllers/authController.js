@@ -18,7 +18,7 @@ authController.login = async (req, res, next) => {
         //if (data.rows.length === 0) return res.status(404).json({message:'users not found'});
         console.log(`pass${data.rows[0].password}`)
         const valid = await bcrypt.compare(password, data.rows[0].password)
-
+        console.log(valid)
         if (!valid) {
           //console.log(`newUser => ${res.locals.newUser._id}`)
           res.locals.validate = false;
