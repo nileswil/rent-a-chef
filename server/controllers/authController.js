@@ -5,7 +5,9 @@ const jwt = require('jsonwebtoken');
 
 authController.login = async (req, res, next) => {
     const { username, password } = req.body;
+    //console.log(`newUser => ${res.locals.newUser}`)
  try {
+    // if (username || password === '' || (username || password) }
       const queryString = `
       SELECT * FROM "user"
       WHERE username = $1
@@ -14,11 +16,17 @@ authController.login = async (req, res, next) => {
         const data = await db.query(queryString, value);
         console.log(`${username} has been found`)
         
-        if (data.rows.length === 0) res.status(404).json({message:'users not found'});
+        //if (data.rows.length === 0) return res.status(404).json({message:'users not found'});
         console.log(`pass${data.rows[0].password}`)
         const valid = await bcrypt.compare(password, data.rows[0].password)
-
-        // res.locals.user = data.rows[0];
+        console.log(valid)
+        if (!valid) {
+          //console.log(`newUser => ${res.locals.newUser._id}`)
+          res.locals.validate = false;
+          return next({message: "invalid password"});
+        } 
+        res.locals.validate = true;
+        console.log(`${username} has been logged in successfully!`);
         return next();
     }
     catch (err) {

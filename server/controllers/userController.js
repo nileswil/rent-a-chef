@@ -19,8 +19,12 @@ userController.createUser = async (req, res, next) => {
     
       const values = [username, hashedPass, picture, firstname, lastname, status];
         const data = await db.query(queryString, values);
-        console.log(`${username} has been added to the database successfully!` )
-        res.locals.newUser = data.rows[0];
+        console.log(`${username} has been added to the database successfully!` );
+        console.log('data.rows:', data.rows); 
+        console.log('data.rows[0]:', data.rows[0]);
+        res.locals._id = data.rows[0]._id.toString();
+        console.log('res.locals.newUser:', res.locals.newUser);
+        // res.status(200).json({username, toke})
         return next();
     }
     catch (err) {
