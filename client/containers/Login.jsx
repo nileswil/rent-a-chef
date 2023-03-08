@@ -8,18 +8,19 @@ export default function Login () {
     const username = document.getElementsByTagName('input')[0].value;
     const password = document.getElementsByTagName('input')[1].value;
 
-    await fetch('/login', {
+    await fetch('/api/login', {
       method: "POST",
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/x-www-form-urlencoded'
       },
-      body: {
-        username: username,
-        password: password,
-      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
     })
-    .then(res => {console.log(res)})
-    .catch(err => console.log)
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   }
 
   return (
@@ -32,8 +33,8 @@ export default function Login () {
           <br/>
           <input type="text" placeholder="Password"/>
         </form>
-        <button id="login-button" onClick={login}>Login</button>
-        <button id="signup-button">Sign Up</button>
+        <Link to="/dashboard"><button id="login-button">Login</button></Link>
+        <Link to="/dashboard"><button id="signup-button">Sign Up</button></Link>
       </div>
     </div>
   )
