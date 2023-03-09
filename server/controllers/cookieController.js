@@ -8,8 +8,7 @@ cookieController.jwtEncryptUser = async (req, res, next) => {
     console.log('id in cookieController ', _id)
     const token = jwt.sign({id:_id}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
     console.log(`token => ${token}`);
-    // loggedUsers[token] = { ...res.locals.user }
-
+    
     res.cookie('authToken', token, {httpOnly: true, secure: true});
     res.locals.token = token;
     return next();
