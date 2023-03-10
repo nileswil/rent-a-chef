@@ -14,15 +14,13 @@ authController.login = async (req, res, next) => {
       `;
         const value = [username];
         const data = await db.query(queryString, value);
-        console.log(`${username} has been found`)
+        console.log(`username entered => ${username} `)
         
-        //if (data.rows.length === 0) return res.status(404).json({message:'users not found'});
         if (data.rows.length === 0) {
           res.locals.validate = false;
           return next({message: "invalid username"});
         };
-
-        console.log(`pass${data.rows[0].password}`)
+console.log(`pass${data.rows[0].password}`)
         const valid = await bcrypt.compare(password, data.rows[0].password)
         console.log(valid)
 

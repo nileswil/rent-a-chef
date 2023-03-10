@@ -30,12 +30,13 @@ export default function Login() {
           username,
           password,
         })
-      }).then((data) => response.json());
-      console.log(response);
+      })
+      const data = await response.json()
+      console.log(data);
 
-      if(response){
-        console.log(response)
-        return navigate('/dashboard');
+      if(response.status === 200){
+        console.log('response', response)
+        navigate('/dashboard');
       }
       return null;
     }

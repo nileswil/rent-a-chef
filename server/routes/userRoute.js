@@ -9,7 +9,7 @@ router.post('/signup', userController.createUser, cookieController.jwtEncryptUse
   res.status(200).json(res.locals.newUser);
 });
 
-router.post('/login', authController.login, cookieController.jwtEncryptUser, (req, res) => {
+router.post('/login', authController.login, (req, res) => {
   res.status(200).json(res.locals.validate); 
 });
 
