@@ -1,0 +1,48 @@
+
+:root {
+  --MainColor: #60c1ff;
+  --MainColorLight: #98d7ff;
+  --MainColorDark: #006cb1;
+
+  --BorderRadius: 5px;
+  --BoxShadow: 2px 2px 2px #006cb138;
+}
+
+body {
+  margin:0;
+  min-height: 100vh;
+  background-color: var(--MainColor);
+}
+
+#content-area {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: auto;
+  text-align: center;
+}
+
+.input-design {
+  margin: 3px;
+  height: 22px;
+  padding: 5px;
+  border-radius: var(--BorderRadius);
+  border: none;
+}
+.input-design:focus-visible {
+  outline: #00000000;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 26px;
+  margin: 4px 5px;
+  border: none;
+  border-radius: var(--BorderRadius);
+  background-color: var(--MainColor);
+  color: inherit;
+  font-weight: inherit;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}

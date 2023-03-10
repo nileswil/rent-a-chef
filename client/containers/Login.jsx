@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import '../../styles/login.scss';
+
 export default function Login() {
   //const [sigin, setSignIn] = useState(false);
   // const [username, setUsername] = useState('');
@@ -44,27 +46,25 @@ export default function Login() {
       }
 
   }
-  // const changeUsername = (e) => {
-  //   setUsername(e.target.value)
-  // }
 
 
   return (
-      <div id="login">
-        <div id="login-box">
-          <div>Hello</div>
-            <div>
-              <input type="text" placeholder="Username"/>
-              <br />
-              <input type="text" placeholder="Password"/>
-            </div>
-          <button id="login-button" onClick={(event) => handleClick(event)}>Login</button>
-          <button id="signup-button">Sign Up</button>
-          {wrongInfo && <div><p> invalid input </p> </div>}
-        </div>
+    <div id="content-area">
+      <div className="centered-box">
+        <div className="welcome">Welcome to</div>
+        <div className="welcome">Rent-A-Chef</div>
+          <div>
+            <input className="input-design" type="text" placeholder="Username"/>
+            <br/>
+            <input className="input-design" type="text" placeholder="Password"/>
+          </div>
+        <button id="login-button" onClick={(event) => handleClick(event)}>Login</button>
+        <button id="signup-button">Sign Up</button>
+        {wrongInfo && <div><p style={{ margin:0,color:"red" }}> invalid input </p></div>}
       </div>
-    )
-  }
+    </div>
+  )
+}
 
 
 

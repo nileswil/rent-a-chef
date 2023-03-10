@@ -7,12 +7,6 @@ const PORT = 3000;
 // const { Pool } = require('pg');
 const userRoute = require('./routes/userRoute');
 const chefRoute = require('./routes/chefRoute')
-// const userController = require('./controllers/userController');
-// const authController = require('./controllers/authController');
-
-
-// const userController = require('./controllers/userController');
-// const authController = require('./controllers/authController');
 
 app.use(cookieParser());
 app.use(express.json());

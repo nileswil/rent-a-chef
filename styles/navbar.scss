@@ -1,19 +1,26 @@
-ul {
+.top-nav-bar {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: var(--MainColorDark);
+  border-bottom: solid 1px var(--MainColorLight);
 }
 
-li {
-  float: left;
+.top-nav-bar li {
   display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+
   &:hover {
-    background-color: #111;
+    background-color: var(--MainColor);
   }
+}
+.home-tab {
+  float: left;
+}
+.right-tab {
+  float: right;
 }
