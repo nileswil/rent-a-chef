@@ -16,22 +16,5 @@ export default function Profile() {
         <Link to='/dashboard'><button style={{ backgroundColor: "red" }}>Cancel</button></Link>
       </div>
     </div>
-
-    // <div id="content-area">
-    //   <div id="login">
-    //     <div id="login-box">
-    //       <div className="welcome">Welcome to</div>
-    //       <div className="welcome">Rent-A-Chef</div>
-    //         <div>
-    //           <input className="login-input" type="text" placeholder="Username"/>
-    //           <br/>
-    //           <input className="login-input" type="text" placeholder="Password"/>
-    //         </div>
-    //       <button id="login-button" onClick={(event) => handleClick(event)}>Login</button>
-    //       <button id="signup-button">Sign Up</button>
-    //       {wrongInfo && <div><p style={{ margin:0,color:"red" }}> invalid input </p></div>}
-    //     </div>
-    //   </div>
-    // </div>
   )
 }
