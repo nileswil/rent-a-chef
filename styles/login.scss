@@ -1,28 +1,35 @@
-#signup-button {
-  background-color: red;
-};
+
 
 .welcome {
   font-size: 37px;
+  margin: 5px;
 }
-
-#login-box {
-  display: inline-block;
-  width: 270px;
-  height: 400px;
-  margin-top: 30%;
-  box-shadow: 0 0 3px black;
-  border-radius: var(--BorderRadius);
-  background-color: var(--MainColorDark);
+.welcome:nth-child(2) {
+  margin-bottom: 60px;
 }
 
 #login {
   text-align: center;
 }
 
-.login-input {
-  margin: 3px;
-  height: 22px;
+.centered-box {
+  display: inline-block;
+  width: 270px;
+  height: 400px;
+  margin-top: 30%;
+  box-shadow: var(--BoxShadow);
   border-radius: var(--BorderRadius);
-  border: none;
+  background-color: var(--MainColorDark);
+  color: white;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-input:nth-child(2) {
+  margin-bottom: 60px;
+}
+
+#signup-button {
+  background-color: red;
+  margin-top: 100px;
 }

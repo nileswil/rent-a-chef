@@ -1,10 +1,11 @@
 
 :root {
   --MainColor: #60c1ff;
-  --MainColorLight: #60c1ff;
+  --MainColorLight: #98d7ff;
   --MainColorDark: #006cb1;
 
   --BorderRadius: 5px;
+  --BoxShadow: 2px 2px 2px #006cb138;
 }
 
 body {
@@ -13,22 +14,35 @@ body {
   background-color: var(--MainColor);
 }
 
-
-button {
-  display: inline-block;
-  padding: 10px 26px;
-  margin: 4px 2px;
-  border: none;
-  border-radius: var(--BorderRadius);
-  background-color: var(--MainColorLight);
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-}
-
 #content-area {
   max-width: 1000px;
   min-height: 100vh;
   margin: auto;
+  text-align: center;
+}
+
+.input-design {
+  margin: 3px;
+  height: 22px;
+  padding: 5px;
+  border-radius: var(--BorderRadius);
+  border: none;
+}
+.input-design:focus-visible {
+  outline: #00000000;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 26px;
+  margin: 4px 5px;
+  border: none;
+  border-radius: var(--BorderRadius);
+  background-color: var(--MainColor);
+  color: inherit;
+  font-weight: inherit;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
 }

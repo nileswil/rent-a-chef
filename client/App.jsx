@@ -8,7 +8,7 @@ export default function App() {
   return (
       <Routes>
         <Route path="/" element={<Login/>}/>
-        <Route path="/dashboard" element={<UserTopNavBar/>}/>
+        <Route path="/dashboard" element={<Profile/>}/>
         <Route path="/profile" element={<Profile/>}/>
       </Routes>
   )
